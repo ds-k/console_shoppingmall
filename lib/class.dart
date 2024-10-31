@@ -38,10 +38,22 @@ class ShoppingMall {
 
   // 장바구니에 담긴 갯수 출력
   void showTotal() {
+    // totalPrice 초기화
+    totalPrice = 0;
     cartList.forEach((product, quentity) {
       totalPrice += product.price * quentity;
       print("${product.name}를 $quentity개 담으셨습니다.");
     });
     print("장바구니에 $totalPrice원 어치를 담으셨네요 !");
+  }
+
+  // 장바구니 초기화
+  void clearCartList() {
+    if (cartList.isEmpty) {
+      print("이미 장바구니가 비어있습니다.");
+    } else {
+      print("장바구니를 초기화합니다.");
+      cartList = {};
+    }
   }
 }

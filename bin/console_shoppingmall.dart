@@ -56,7 +56,9 @@ void main(List<String> arguments) {
           print("종료하지 않습니다.");
           onBoarding();
         }
-
+      case "6":
+        shoppingMall.clearCartList();
+        onBoarding();
       default:
         print("지원하지 않는 기능입니다 ! 다시 시도해 주세요 ..");
     }
