@@ -40,11 +40,24 @@ class ShoppingMall {
   void showTotal() {
     // totalPrice 초기화
     totalPrice = 0;
-    cartList.forEach((product, quentity) {
-      totalPrice += product.price * quentity;
-      print("${product.name}를 $quentity개 담으셨습니다.");
-    });
-    print("장바구니에 $totalPrice원 어치를 담으셨네요 !");
+
+    if (cartList.isEmpty) {
+      print("장바구니에 담긴 상품이 없습니다.");
+    } else {
+      // cartList 안의 모든 상품 가격 더하기
+      cartList.forEach((product, quentity) {
+        totalPrice += product.price * quentity;
+      });
+      // cartList의 key를 순회하면서 이름 리스트 만들기
+      // 개수도 같이 표현하면 좋을 것 같아 추가했습니다.
+      List<String> cartProductNameList = cartList.keys
+          .toList()
+          .map((product) => "${product.name} ${cartList[product]}개")
+          .toList();
+
+      print(
+          "장바구니에 ${cartProductNameList.join(", ")}이(가) 담겨있네요. 총 $totalPrice원 입니다!");
+    }
   }
 
   // 장바구니 초기화
