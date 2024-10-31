@@ -14,7 +14,12 @@ class ShoppingMall {
   ShoppingMall(List<Product> products) : productList = products;
 
   void showProducts() {
-    productList.map((product) => print("${product.name} / ${product.price}원"));
+    // productList.map((product) => print("${product.name} / ${product.price}원"));
+
+    // 반복문으로 모든 product 출력
+    for (int i = 0; i < productList.length; i++) {
+      print("${productList[i].name} / ${productList[i].price}원");
+    }
   }
 
   void addToCart(product, quantity) {
