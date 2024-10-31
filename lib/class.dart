@@ -14,22 +14,23 @@ class ShoppingMall {
   ShoppingMall(List<Product> products) : productList = products;
 
   void showProducts() {
-    // productList.map((product) => print("${product.name} / ${product.price}원"));
-
-    // 반복문으로 모든 product 출력
-    for (int i = 0; i < productList.length; i++) {
-      print("${productList[i].name} / ${productList[i].price}원");
+    for (Product product in productList) {
+      print("${product.name} / ${product.price}원");
     }
   }
 
-  void addToCart(product, quantity) {
-    cartList.update(product, (quantity) => quantity += 1);
+  void addToCart(Product product, int quantity) {
+    if (cartList.containsKey(product)) {
+      cartList[product] = cartList[product]! + quantity;
+    } else {
+      cartList[product] = quantity;
+    }
   }
 
   void showTotal() {
     cartList.forEach((product, quentity) {
       totalPrice += product.price * quentity;
-      print("$product를 $quentity개 담으셨습니다.");
+      print("${product.name}를 $quentity개 담으셨습니다.");
     });
     print("장바구니에 $totalPrice원 어치를 담으셨네요 !");
   }

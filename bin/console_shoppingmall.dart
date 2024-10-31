@@ -21,9 +21,32 @@ void main(List<String> arguments) {
         shoppingMall.showProducts();
         onBoarding();
       case "2":
-        print("2입니다.");
+        try {
+          print("상품 이름을 입력해 주세요 !");
+          String name = stdin.readLineSync() as String;
+          print("상품 개수을 입력해 주세요 !");
+          int quantity = int.parse(stdin.readLineSync() as String);
+          List<String> productNameList =
+              shoppingMall.productList.map((e) => e.name).toList();
+          if (!productNameList.contains(name)) {
+            throw Exception("입력값이 올바르지 않아요 !");
+          } else if (quantity <= 0) {
+            throw Exception("0개보다 많은 개수의 상품만 담을 수 있어요 !");
+          }
+          Product productToAddCart = shoppingMall.productList
+              .where((product) => product.name == name)
+              .toList()[0];
+          // print(productToAddCart);
+          shoppingMall.addToCart(productToAddCart, quantity);
+        } on FormatException {
+          print("입력값이 올바르지 않아요 !");
+        } catch (e) {
+          print(e.toString().substring(11)); // Exception 자르기
+        }
+
         onBoarding();
       case "3":
+        shoppingMall.showTotal();
         print("3입니다.");
         onBoarding();
       case "4":
