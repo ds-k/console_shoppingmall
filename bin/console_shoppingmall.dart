@@ -36,7 +36,6 @@ void main(List<String> arguments) {
           Product productToAddCart = shoppingMall.productList
               .where((product) => product.name == name)
               .toList()[0];
-          // print(productToAddCart);
           shoppingMall.addToCart(productToAddCart, quantity);
         } on FormatException {
           print("입력값이 올바르지 않아요 !");

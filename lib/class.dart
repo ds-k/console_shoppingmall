@@ -19,14 +19,24 @@ class ShoppingMall {
     }
   }
 
+  // 카트에 product가 있는지 확인 후, 있으면 개수 추가 없으면 카트에 추가
   void addToCart(Product product, int quantity) {
     if (cartList.containsKey(product)) {
-      cartList[product] = cartList[product]! + quantity;
+      /*
+      cartList[product]의 타입이 int?라고 뜨지만,  
+      전체 로직에서 cartList에 product를 주입할 때 
+      무조건 int타입의 quantity를 주입하도록 설계
+      그래서 cartList[product]! 해도 상관은 없으나,
+      좀 더 안전하게 cartList[product] ?? 0 표현식 사용 권장
+      */
+      cartList[product] = (cartList[product] ?? 0) + quantity;
+      // cartList[product] = cartList[product]! + quantity;
     } else {
       cartList[product] = quantity;
     }
   }
 
+  // 장바구니에 담긴 갯수 출력
   void showTotal() {
     cartList.forEach((product, quentity) {
       totalPrice += product.price * quentity;
