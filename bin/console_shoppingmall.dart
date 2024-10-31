@@ -46,7 +46,6 @@ void main(List<String> arguments) {
         onBoarding();
       case "3":
         shoppingMall.showTotal();
-        print("3입니다.");
         onBoarding();
       case "4":
         print("이용해 주셔서 감사합니다 ~ 안녕히 가세요 !");
