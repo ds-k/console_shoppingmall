@@ -1,5 +1,15 @@
-import 'package:console_shoppingmall/console_shoppingmall.dart' as console_shoppingmall;
+import 'package:console_shoppingmall/class.dart';
+import 'dart:io';
 
 void main(List<String> arguments) {
-  print('Hello world: ${console_shoppingmall.calculate()}!');
+  String category =
+      '''---------------------------------------------------------------------------------------------------------
+[1] 상품 목록 보기 / [2] 장바구니에 담기 / [3] 장바구니에 담긴 상품의 총 가격 보기 / [4] 프로그램 종료
+---------------------------------------------------------------------------------------------------------
+''';
+  print(category);
+
+  if (stdin.readLineSync() == "1") {
+    print("1입니당");
+  }
 }
